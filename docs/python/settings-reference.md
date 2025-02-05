@@ -1,12 +1,12 @@
 ---
-Order: 14
+Order: 17
 Area: python
 TOCTitle: Settings Reference
 ContentId: d256dc5c-95e9-4c02-a82f-947bf34a3517
 PageTitle: Settings Reference for Python
 DateApproved: 3/6/2023
 MetaDescription: Settings Reference for the Python extension in Visual Studio Code
-MetaSocialImage: images/tutorial/social.png
+MetaSocialImage: images/tutorial/python-social.png
 ---
 # Python settings reference
 
@@ -53,6 +53,7 @@ The language server settings apply when `python.languageServer` is `Pylance` or 
 | Setting<br/>(python.analysis.) | Default | Description |
 | --- | --- | --- |
 | typeCheckingMode | off | Specifies the level of type checking analysis to perform. <br> Available values are `off`, `basic`, and `strict`. <br> When set to `off` no type checking analysis is conducted; unresolved imports/variables diagnostics are produced. <br> When set to `basic` non-type checking-related rules (all rules in `off`), as well as basic type checking rules are used. <br> When set to `strict` all type checking rules at the highest severity of error (including all rules in `off` and `basic` categories) are used. |
+| languageServerMode | default |  Offers predefined configurations to optimize Pylance's performance based on the development needs. <br> Available values are `default` and `light`. <br> When set to `default`, the language server delivers sufficient functionality for most machines without overloading the system. <br> When set to `light`, it enables a lightweight, memory-efficient setup. This mode disables various features to make Pylance function more like a streamlined text editor, and it's ideal for those who do not require the full breadth of IntelliSense capabilities and prefer Pylance to be as resource-friendly as possible. <br> Default setting values are overriden to the following by each mode:  <table> <tr> <th>Setting</th> <th>`light` mode</th> <th> `default` mode </th> </tr> <tr> <td>python.analysis.exclude</td> <td> ["**"]    </td> <td> [] </td>  <tr> <td>python.analysis.useLibraryCodeForTypes</td> <td>false</td> <td>true</td> <tr> <td> python.analysis.enablePytestSupport  </td> <td>false</td> <td>true </td>  <tr> <td> python.analysis.indexing </td> <td>false</td> <td>true </td></tr> </table> |
 | diagnosticMode | openFilesOnly | Specifies what code files the language server analyzes for problems. <br> Available values are `workspace` and `openFilesOnly`. |
 | include | [] | Paths of directories or files that should be included in analysis. <br> If no paths are specified, Pylance defaults to the directory that contains the workspace root. <br> Paths may contain wildcard characters such as `**` (a directory or multiple levels of directories), `*` (a sequence of zero or more characters), or `?` (a single character). |
 | exclude | [] | Paths of directories or files that should not be included in analysis. <br> These override the directories listed under the `python.analysis.include` setting, allowing specific subdirectories to be excluded. <br> Note that files listed in this `exclude` setting may still be included in the analysis if they are referenced/imported by source files that are not in the excluded list. <br> Paths may contain wildcard characters such as `**` (a directory or multiple levels of directories), `*` (a sequence of zero or more characters), or `?` (a single character). <br> If no exclude paths are specified, Pylance automatically excludes the following: `**/node_modules`, `**/\_\_pycache\_\_`, `.git` and any virtual environment directories. |
@@ -66,8 +67,10 @@ The language server settings apply when `python.languageServer` is `Pylance` or 
 | autoFormatStrings | false | When typing "{" inside a string, whether to automatically prefix it with an "f". |
 | completeFunctionParens | false | Adds parentheses to function completions. Accepted values are `true` and `false`. |
 | useLibraryCodeForTypes | true | Parses the source code for a package when a type stub is not found. Available values are `true` and `false`. |
+| includeAliasesFromUserFiles | false | Whether to include alias symbols from user files in auto-import suggestions and in the add import Quick Fix. When disabled, Pylance will offer the import suggestion from where the symbol is defined. When enabled, it'll also offer import suggestions from files where the symbol is imported (i.e. aliased). Available values are `true` and `false`. |
 | autoImportCompletions | false | Controls the offering of auto imports in completions. Available values are `true` and `false`. |
-| importFormat | `absolute`| Defines the default format when auto importing modules. Accepted values are `absolute` or `relative`. |
+| importFormat | absolute | Defines the default format when auto importing modules. Accepted values are `absolute` or `relative`. |
+| aiCodeActions | true | Whether to enable specific AI-assisted code actions. Requires the [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extension to be enabled. <br> Accepted value is an object with a code action as key and a boolean as value. <br> Available code actions to use as keys: <ul> <li> `implementAbstractClasses`: enables code action to implement methods of classes inherited from an abstract class, using AI suggestions from GitHub Copilot to populate the method body.  </li> </ul>  Usage example: ```{"implementAbstractClasses": true}``` |
 | inlayHints.variableTypes | false | Whether to display inlay hints for variable types. Accepted values are `true` or `false`. |
 | inlayHints.functionReturnTypes | false |  Whether to display inlay hints for function return types.  Accepted values are `true` or `false`. |
 | inlayHints.callArgumentNames | false |  Whether to display inlay hints for call argument names.  Accepted values are `true` or `false`. |
@@ -75,6 +78,7 @@ The language server settings apply when `python.languageServer` is `Pylance` or 
 | diagnosticSeverityOverrides | {} | Allows a user to override the severity levels for individual diagnostics. <br> For each rule, the available severity levels are `error` (red squiggle), `warning` (yellow squiggle), `information` (blue squiggle), and `none` (rule disabled). <br> For information about the keys to use for the diagnostic severity rules, see the **Diagnostic severity rules** section below. |
 | fixAll | `[]` | A list of code actions to run when running the **Fix All** command or the `source.fixAll` code action. <br> Accepted values in this list: <ul><li> `source.unusedImports`: removes all unused imports in the open file</li> <li> `source.convertImportFormat`: converts the imports according to the `python.analysis.importFormat` setting </li> |
 | logLevel | `Error` | Specifies the level of logging to be performed by the language server.<br> The possible levels of logging, in increasing level of information provided, are `Error`, `Warning`, `Information`, and `Trace`.|
+| autoIndent | true | Whether to automatically adjust indentation based on language semantics when typing Python code. <br> Accepted values are `true` or `false`. |
 
 **Diagnostic severity rules**
 
@@ -114,7 +118,7 @@ This section details all the available rules that can be customized using the `p
 | reportUntypedClassDecorator | Diagnostics for class decorators that have no type annotations. These obscure the class type, defeating many type analysis features. |
 | reportUntypedBaseClass | Diagnostics for base classes whose type cannot be determined statically. These obscure the class type, defeating many type analysis features.  |
 | reportUntypedNamedTuple | Diagnostics when “namedtuple” is used rather than “NamedTuple”. The former contains no type information, whereas the latter does. |
-| reportPrivateUsage | Diagnostics for incorrect usage of private or protected variables or functions. Protected class members begin with a single underscore `_` and can be accessed only by subclasses. Private class members begin with a double underscore but do not end in a double underscore and can be accessed only within the declaring class. Variables and functions declared outside of a class are considered private if their names start with either a single or double underscore, and they cannot be accessed outside of the declaring module. |
+| reportPrivateUsage | Diagnostics for incorrect usage of private or protected variables or functions. Protected class members begin with a single underscore `_` and can be accessed only by subclasses. Private class members begin with a double underscore but do not end in a double underscore and can be accessed only within the declaring class. Variables and functions declared outside of a class are considered private if their names start with either a single or double underscore, and they cannot be accessed outside of the declaring module. |
 | reportConstantRedefinition | Diagnostics for attempts to redefine variables whose names are all-caps with underscores and numerals. |
 | reportIncompatibleMethodOverride | Diagnostics for methods that override a method of the same name in a base class in an incompatible manner (wrong number of parameters, incompatible parameter types, or incompatible return type). |
 | reportIncompatibleVariableOverride | Diagnostics for class variable declarations that override a symbol of the same name in a base class with a type that is incompatible with the base class symbol type.  |
@@ -136,7 +140,7 @@ This section details all the available rules that can be customized using the `p
 | reportUnboundVariable | Diagnostics for unbound and possibly unbound variables.  |
 | reportInvalidStubStatement | Diagnostics for statements that should not appear within a stub file. |
 | reportUnusedCallResult | Diagnostics for call expressions whose results are not consumed and are not None. |
-| reportUnsupportedDunderAll | Diagnostics for unsupported operations performed on `__all__`. |
+| reportUnsupportedDunderAll | Diagnostics for unsupported operations performed on `__all__`. |
 | reportUnusedCoroutine | Diagnostics for call expressions that return a Coroutine and whose results are not consumed. |
 
 ## AutoComplete settings
@@ -144,105 +148,6 @@ This section details all the available rules that can be customized using the `p
 | Setting<br/>(python.autoComplete.) | Default | Description | See also |
 | --- | --- | --- | --- |
 | extraPaths | `[]` | Specifies locations of additional packages for which to load autocomplete data. | [Editing](/docs/python/editing.md#autocomplete-and-intellisense) |
-
-## Formatting settings
-
-| Setting<br/>(python.formatting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| provider | `"autopep8"` | Specifies the formatter to use, either "autopep8", "black", or "yapf". |[Editing - Formatting](/docs/python/editing.md#formatting) |
-| autopep8Path | `"autopep8"` | Path to autopep8 | [Editing - Formatting](/docs/python/editing.md#formatting) |
-| autopep8Args| `[]` | Arguments for autopep8, where each top-level element that's separated by a space is a separate item in the list. | [Editing - Formatting](/docs/python/editing.md#formatting) |
-| blackPath | `"black"` | Path to black | [Editing - Formatting](/docs/python/editing.md#formatting) |
-| blackArgs| `[]` | Arguments for black, where each top-level element that's separated by a space is a separate item in the list. | [Editing - Formatting](/docs/python/editing.md#formatting) |
-| yapfPath | `"yapf"` | Path to yapf | [Editing - Formatting](/docs/python/editing.md#formatting) |
-| yapfArgs| `[]` | Arguments for yapf, where each top-level element that's separated by a space is a separate item in the list. | [Editing - Formatting](/docs/python/editing.md#formatting) |
-
-## Linting settings
-
-### General linting
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| enabled | `true` | Specifies whether to enable linting in general. | [Linting](/docs/python/linting.md) |
-| lintOnSave | `true` | Specifies whether to lint when saving a file. | [Linting](/docs/python/linting.md) |
-| maxNumberOfProblems | `100` | Limits the number of linting messages shown. | [Linting](/docs/python/linting.md) |
-| ignorePatterns | `[".vscode/*.py", "**/site-packages/**/*.py"]` | Exclude file and folder patterns. | [Linting](/docs/python/linting.md) |
-
-### Pylint
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| pylintEnabled | `true` | Specifies whether to enable Pylint. | [Linting](/docs/python/linting.md) |
-| pylintArgs | `[]` | Additional arguments for Pylint, where each top-level element that's separated by a space is a separate item in the list. | [Linting](/docs/python/linting.md) |
-| pylintPath | `"pylint"` | The path to Pylint. | [Linting](/docs/python/linting.md) |
-| pylintCategorySeverity.convention | `"Information"` | Mapping for Pylint convention message to VS Code type. | [Linting](/docs/python/linting.md) |
-| pylintCategorySeverity.refactor | `"Hint"` | Mapping for Pylint refactor message to VS Code type. | [Linting](/docs/python/linting.md) |
-| pylintCategorySeverity.warning | `"Warning"` | Mapping for Pylint warning message to VS Code type. | [Linting](/docs/python/linting.md) |
-| pylintCategorySeverity.error | `"Error"` | Mapping for Pylint error message to VS Code type. | [Linting](/docs/python/linting.md) |
-| pylintCategorySeverity.fatal | `"Error"` | Mapping for Pylint fatal message to VS Code type. | [Linting](/docs/python/linting.md) |
-
-### pycodestyle (pep8)
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| pycodestyleEnabled | `false` | Specifies whether to enable pycodestyle. | [Linting](/docs/python/linting.md) |
-| pycodestyleArgs | `[]` | Additional arguments for pycodestyle, where each top-level element that's separated by a space is a separate item in the list. | [Linting](/docs/python/linting.md) |
-| pycodestylePath | `"pycodestyle"` | The path to pycodestyle. | [Linting](/docs/python/linting.md) |
-| pycodestyleCategorySeverity.W | `"Warning"` | Mapping for pycodestyle W message to VS Code type.| [Linting](/docs/python/linting.md) |
-| pycodestyleCategorySeverity.E | `"Error"` | Mapping for pycodestyle E message to VS Code type.| [Linting](/docs/python/linting.md) |
-
-### Flake8
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| flake8Enabled | `false` | Specifies whether to enable flake8. | [Linting](/docs/python/linting.md) |
-| flake8Args | `[]` | Additional arguments for flake8, where each top-level element that's separated by a space is a separate item in the list. | [Linting](/docs/python/linting.md) |
-| flake8Path | `"flake8"` | The path to flake8. | [Linting](/docs/python/linting.md) |
-| flake8CategorySeverity.F | `"Error"` | Mapping for flake8 F message to VS Code type.| [Linting](/docs/python/linting.md) |
-| flake8CategorySeverity.E | `"Error"` | Mapping for flake8 E message to VS Code type.| [Linting](/docs/python/linting.md) |
-| flake8CategorySeverity.W | `"Warning"` | Mapping for flake8 W message to VS Code type.| [Linting](/docs/python/linting.md) |
-
-### mypy
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| mypyEnabled | `false` | Specifies whether to enable mypy. | [Linting](/docs/python/linting.md) |
-| mypyArgs | `["--ignore-missing-imports", "--follow-imports=silent"]` | Additional arguments for mypy, where each top-level element that's separated by a space is a separate item in the list. |[Linting](/docs/python/linting.md) |
-| mypyPath | `"mypy"` | The path to mypy. | [Linting](/docs/python/linting.md) |
-| mypyCategorySeverity.error | `"Error"` | Mapping for mypy error message to VS Code type. | [Linting](/docs/python/linting.md) |
-| mypyCategorySeverity.note | `"Information"` | Mapping for mypy note message to VS Code type. | [Linting](/docs/python/linting.md) |
-
-### pydocstyle
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| pydocstyleEnabled | `false` | Specifies whether to enable pydocstyle. | [Linting](/docs/python/linting.md) |
-| pydocstyleArgs | `[]` | Additional arguments for pydocstyle, where each top-level element that's separated by a space is a separate item in the list. | [Linting](/docs/python/linting.md) |
-| pydocstylePath | `"pydocstyle"` | The path to pydocstyle. | [Linting](/docs/python/linting.md) |
-
-### prospector
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| prospectorEnabled | `false` | Specifies whether to enable prospector. | [Linting](/docs/python/linting.md) |
-| prospectorArgs | `[]` | Additional arguments for prospector, where each top-level element that's separated by a space is a separate item in the list. | [Linting](/docs/python/linting.md) |
-| prospectorPath | `"prospector"` | The path to prospector. | [Linting](/docs/python/linting.md) |
-
-### pylama
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| pylamaEnabled | `false` | Specifies whether to enable pylama. | [Linting](/docs/python/linting.md) |
-| pylamaArgs | `[]` | Additional arguments for pylama, where each top-level element that's separated by a space is a separate item in the list.  | [Linting](/docs/python/linting.md) |
-| pylamaPath | `"pylama"` | The path to pylama. | [Linting](/docs/python/linting.md) |
-
-### bandit
-
-| Setting<br/>(python.linting.) | Default | Description | See also |
-| --- | --- | --- | --- |
-| banditEnabled | `false` | Specifies whether to enable bandit. | [Linting](/docs/python/linting.md) |
-| banditArgs | `[]` | Additional arguments for bandit, where each top-level element that's separated by a space is a separate item in the list.  | [Linting](/docs/python/linting.md) |
-| banditPath | `"bandit"` | The path to bandit. | [Linting](/docs/python/linting.md) |
 
 ## Testing settings
 

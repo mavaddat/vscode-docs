@@ -23,6 +23,7 @@
         "/api/**/*": "images/${documentBaseName}/"
     },
     "editor.codeActionsOnSave": {
-        "source.organizeLinkDefinitions": true
-    }
+        "source.organizeLinkDefinitions": "explicit"
+    },
+    "markdown.editor.filePaste.videoSnippet": "<video src=\"${src}\" title=\"${title}\" autoplay loop controls muted></video>"
 }

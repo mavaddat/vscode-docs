@@ -4,7 +4,7 @@ Area: editor
 TOCTitle: Variables reference
 ContentId: ff9cd4ea-e3f0-4170-9451-2f2ea2b909ea
 PageTitle: Visual Studio Code Variables Reference
-DateApproved: 7/6/2023
+DateApproved: 12/11/2024
 MetaDescription: Visual Studio Code variable substitution reference
 ---
 # Variables Reference
@@ -33,6 +33,7 @@ The following predefined variables are supported:
 - **${execPath}** - the path to the running VS Code executable
 - **${defaultBuildTask}** - the name of the default build task
 - **${pathSeparator}** - the character used by the operating system to separate components in file paths
+- **${/}** - shorthand for **${pathSeparator}**
 
 ### Predefined variables examples
 
@@ -265,7 +266,7 @@ A consequence of this is that the evaluation of a variable (for example, a comma
 
 ### Is variable substitution supported in User and Workspace settings?
 
-The predefined variables are supported in a select number of setting keys in `settings.json` files such as the terminal `cwd`, `env`, `shell` and `shellArgs` values. Some [settings](/docs/getstarted/settings.md) like `window.title` have their own variables:
+The predefined variables are supported in a select number of setting keys in `settings.json` files such as the terminal `cwd`, `env`, `shell` and `shellArgs` values. Some [settings](/docs/getstarted/settings.md) like `setting(window.title)` have their own variables:
 
 ```json
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}"

@@ -4,7 +4,7 @@ Area: languages
 TOCTitle: Overview
 ContentId: AC888642-FBE5-43E5-9DC2-47B197717940
 PageTitle: Language Support in Visual Studio Code
-DateApproved: 7/6/2023
+DateApproved: 12/11/2024
 MetaDescription: In Visual Studio Code we have support for all common languages including smart code completion and debugging.
 ---
 # Programming Languages
@@ -33,7 +33,7 @@ Click on any linked item to get an overview of how to use VS Code in the context
 The richness of support varies across the different languages and their extensions:
 
 * Syntax highlighting and bracket matching
-* Smart completions (IntelliSense, Artificial Intelligence with [GitHub Copilot](/docs/editor/artificial-intelligence.md))
+* Smart completions (IntelliSense, Artificial Intelligence with [GitHub Copilot](/docs/editor/github-copilot.md))
 * Linting and corrections
 * Code navigation (Go to Definition, Find All References)
 * Debugging
@@ -45,9 +45,9 @@ In VS Code, you can enhance your coding with artificial intelligence (AI), such 
 
 [GitHub Copilot](https://copilot.github.com/) is an AI-powered code completion tool that helps you write code faster and smarter. You can use the [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) in VS Code to generate code, or to learn from the code it generates.
 
-![Copilot extension in the VS Code Marketplace](images/overview/copilot-extension.png)
+[![GitHub Copilot extension in the VS Code Marketplace](images/overview/copilot-extension.png)](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
-You can learn more about how to get started with Copilot in the [Copilot documentation](/docs/editor/artificial-intelligence.md).
+You can learn more about how to get started with Copilot in the [Copilot documentation](/docs/editor/github-copilot.md).
 
 ## Change the language for the selected file
 
@@ -71,7 +71,7 @@ You can find a list of known identifiers in the [language identifier reference](
 
 ## Add a file extension to a language
 
-You can add new file extensions to an existing language with the `files.associations` [setting](/docs/getstarted/settings.md).
+You can add new file extensions to an existing language with the `setting(files.associations)` [setting](/docs/getstarted/settings.md).
 
 For example, the setting below adds the `.myphp` file extension to the `php` language identifier:
 
@@ -104,7 +104,7 @@ Yes, you can also add support for your favorite language through TextMate colori
 
 ### Can I map additional file extensions to a language?
 
-Yes, with the `files.associations` [setting](/docs/getstarted/settings.md) you can map file extensions to an existing language either globally or per workspace.
+Yes, with the `setting(files.associations)` [setting](/docs/getstarted/settings.md) you can map file extensions to an existing language either globally or per workspace.
 
 Here is an example that will associate more file extensions to the PHP language:
 
@@ -127,7 +127,7 @@ Note that the pattern is a [glob pattern](/docs/editor/glob-patterns.md) that wi
 
 ### How do I set the default language for new files?
 
-Using the `files.defaultLanguage` [setting](/docs/getstarted/settings.md), you can map all new files to a default language. Whenever a new blank file is opened, the editor will be configured for that language mode.
+Using the `setting(files.defaultLanguage)` [setting](/docs/getstarted/settings.md), you can map all new files to a default language. Whenever a new blank file is opened, the editor will be configured for that language mode.
 
 This example will associate new files with the HTML language:
 

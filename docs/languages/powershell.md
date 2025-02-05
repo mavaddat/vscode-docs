@@ -4,7 +4,7 @@ Area: languages
 TOCTitle: PowerShell
 ContentId: 8688bb6d-793e-4a37-aed2-5af4cfe89940
 PageTitle: PowerShell editing with Visual Studio Code
-DateApproved: 07/11/2023
+DateApproved: 12/11/2024
 MetaDescription: Learn about using PowerShell in Visual Studio Code
 ---
 # PowerShell in Visual Studio Code
@@ -130,15 +130,14 @@ New Project from Plaster Template** command from the Command Palette
 
 ## PowerShell extension settings
 
-You can customize VS Code [settings][07] from the **File** > **Preferences** > **Settings** menu
-item (**Code** > **Preferences** > **Settings** on macOS).
+You can customize VS Code [settings][07] from the **File** > **Preferences** > **Settings** menu item.
 
 You can also select the gear icon located in the lower left corner of the Activity Bar.
 
 ![codeGear][32]
 
 You can also use the keyboard shortcut `kb(workbench.action.openSettings)` to open your settings.
-You can still open the `settings.json` file using **Preferences: Open Settings (JSON)** command from
+You can still open the `settings.json` file using **Preferences: Open User Settings (JSON)** command from
 the Command Palette (`kb(workbench.action.showCommands)`) or by changing the default settings editor
 with the `"workbench.settings.editor"` setting.
 

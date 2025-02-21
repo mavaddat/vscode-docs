@@ -4,9 +4,9 @@ Area: languages
 TOCTitle: C#
 ContentId: 40C8AAC1-C00D-4E91-8877-737A598346B6
 PageTitle: C# programming with Visual Studio Code
-DateApproved: 6/6/2023
+DateApproved: 02/06/2025
 MetaDescription: Find out how to get the best out of Visual Studio Code and C#.
-MetaSocialImage: images/csharp/languages_csharp.png
+MetaSocialImage: images/csharp/languages-csharp-social.png
 ---
 # Working with C&#35;
 
@@ -40,6 +40,7 @@ Supported .NET project types include:
 * ASP.NET Core App
 * ASP.NET Core Web API
 * ASP.NET Core MVC Web App
+* Blazor Web App
 * Blazor Server App
 * Blazor WebAssembly App
 * Console App
@@ -72,11 +73,11 @@ IntelliSense just works: hit `kb(editor.action.triggerSuggest)` at any time to g
 
 [GitHub Copilot](https://copilot.github.com/) is an AI-powered code completion tool that helps you write code faster and smarter. You can use the [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) in VS Code to generate code, or to learn from the code it generates.
 
-![Copilot extension in the VS Code Marketplace](images/csharp/copilot-extension.png)
+[![GitHub Copilot extension in the VS Code Marketplace](images/csharp/copilot-extension.png)](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
 GitHub Copilot provides suggestions for numerous languages and a wide variety of frameworks, and it works especially well for Python, JavaScript, TypeScript, Ruby, Go, C# and C++.
 
-You can learn more about how to get started with Copilot in the [Copilot documentation](/docs/editor/artificial-intelligence.md).
+You can learn more about how to get started with Copilot in the [Copilot documentation](/docs/editor/github-copilot.md).
 
 ## Snippets for C&#35;
 
@@ -100,7 +101,7 @@ Another cool feature is the ability to see the number of references to a method 
 
 ![CodeLens](images/csharp/codelens.png)
 
->**Tip:** You can turn off references information displayed in CodeLens with the `editor.codeLens` [setting](/docs/getstarted/settings.md).
+>**Tip:** You can turn off references information displayed in CodeLens with the `setting(editor.codeLens)` [setting](/docs/editor/settings.md).
 
 ## Find References/Peek Definition
 

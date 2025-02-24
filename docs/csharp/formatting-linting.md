@@ -1,5 +1,5 @@
 ---
-Order: 5
+Order: 6
 Area: csharp
 TOCTitle: Formatting and Linting
 ContentId: 34c5ba31-5844-4eca-8fef-dabb6e917314
@@ -12,7 +12,7 @@ MetaDescription: Formatting and linting C# source code in Visual Studio Code
 
 You can format your C# source code using the [C# Dev Kit extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit), a lightweight extension to enhance your C# development experience in Visual Studio Code.
 
-Navigate to **File > Preferences > Settings** (`kb(workbench.action.openSettings)`) to customize how your `.cs` files are formatted.  The Settings editor gives you a list of different formatting options (particularly under **Commonly Used** and **Text Editor**) that you can adjust across your specific workspace or your entire user profile.
+Navigate to **File** > **Preferences** > **Settings** (`kb(workbench.action.openSettings)`) to customize how your `.cs` files are formatted.  The Settings editor gives you a list of different formatting options (particularly under **Commonly Used** and **Text Editor**) that you can adjust across your specific workspace or your entire user profile.
 
 ![Commonly Used menu](images/formatting-linting/commonly-used-menu.png)
 

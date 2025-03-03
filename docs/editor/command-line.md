@@ -4,7 +4,7 @@ Area: editor
 TOCTitle: Command Line Interface
 ContentId: 8faef870-7a5f-4070-ad17-8ba791006912
 PageTitle: The Visual Studio Code command-line interface
-DateApproved: 7/6/2023
+DateApproved: 02/06/2025
 MetaDescription: Visual Studio Code command-line interface (switches).
 ---
 # Command Line Interface (CLI)
@@ -29,7 +29,7 @@ You can launch VS Code from the command line to quickly open a file, folder, or 
 
 **Note:** Users on macOS must first run a command (**Shell Command: Install 'code' command in PATH**) to add VS Code executable to the `PATH` environment variable. Read the [macOS setup guide](/docs/setup/mac.md) for help.
 
-Windows and Linux installations should add the VS Code binaries location to your system path. If this isn't the case, you can manually add the location to the `Path` environment variable (`$PATH` on Linux). For example, on Windows, VS Code is installed under `AppData\Local\Programs\Microsoft VS Code\bin`. To review platform-specific setup instructions, see [Setup](/docs/setup/setup-overview.md).
+Windows and Linux installations should add the VS Code binaries location to your system path. If this isn't the case, you can manually add the location to the `Path` environment variable (`$PATH` on Linux). For example, on Windows, the default VS Code binaries location is `AppData\Local\Programs\Microsoft VS Code\bin`. To review platform-specific setup instructions, see [Setup](/docs/setup/setup-overview.md).
 
 > **Insiders:** If you are using the VS Code [Insiders](/insiders) preview, you launch your Insiders build with `code-insiders`.
 
@@ -47,7 +47,7 @@ Argument|Description
 `-d` or `--diff <file1> <file2>` | Open a file difference editor. Requires two file paths as arguments.
 `-m` or `--merge  <path1> <path2> <base> <result>` | Perform a three-way merge by providing paths for two modified versions of a file, the common origin of both modified versions, and the output file to save merge results.
 `-w` or `--wait` | Wait for the files to be closed before returning.
-`--locale <locale>` | Set the [display language](/docs/getstarted/locales.md) (locale) for the VS Code session. (for example, `en-US` or `zh-TW`)
+`--locale <locale>` | Set the [display language](/docs/editor/locales.md) (locale) for the VS Code session. (for example, `en-US` or `zh-TW`)
 
 ![launch with locale](images/command-line/launch-locale.png)
 
@@ -63,13 +63,13 @@ For both files and folders, you can use absolute or relative paths. Relative pat
 
 If you specify more than one file at the command line, VS Code will open only a single instance.
 
-If you specify more than one folder at the command line, VS Code will create a [Multi-root Workspace](/docs/editor/multi-root-workspaces.md) including each folder.
+If you specify more than one folder at the command line, VS Code will create a [Multi-root Workspace](/docs/editor/workspaces/multi-root-workspaces.md) including each folder.
 
 Argument|Description
 ------------------|-----------
 `file` | Name of a file to open. If the file doesn't exist, it will be created and marked as edited. You can specify multiple files by separating each file name with a space.
 `file:line[:character]` | Used with the `-g` argument. Name of a file to open at the specified line and optional character position.
-`folder` | Name of a folder to open. You can specify multiple folders and a new [Multi-root Workspace](/docs/editor/multi-root-workspaces.md) is created.
+`folder` | Name of a folder to open. You can specify multiple folders and a new [Multi-root Workspace](/docs/editor/workspaces/multi-root-workspaces.md) is created.
 
 ![go to line and column](images/command-line/goto-line-column.png)
 
@@ -93,6 +93,7 @@ Argument|Description
 `--list-extensions` | List the installed extensions.
 `--show-versions` | Show versions of installed extensions, when using `--list-extensions`
 `--enable-proposed-api <ext>` | Enables proposed api features for an extension. Provide the full extension name `publisher.extension` as an argument.
+`--update-extensions` | Update installed extensions and exit.
 
 ![install extension](images/command-line/install-extension.png)
 
@@ -102,8 +103,8 @@ There are several CLI options that help with reproducing errors and advanced set
 
 Argument|Description
 ------------------|-----------
-`--extensions-dir <dir>` | Set the root path for extensions. Has no effect in [Portable Mode](/docs/editor/portable.md).
-`--user-data-dir <dir>` | Specifies the directory that user data is kept in, useful when running as root. Has no effect in [Portable Mode](/docs/editor/portable.md).
+`--extensions-dir <dir>` | Set the root path for extensions.<br>Overridden in [Portable Mode](/docs/editor/portable.md) by the `data` folder.
+`--user-data-dir <dir>` | Specifies the directory that user data is kept in, useful when running as root.<br>Overridden in [Portable Mode](/docs/editor/portable.md) by the `data` folder.
 `-s, --status` | Print process usage and diagnostics information.
 `-p, --performance` | Start with the **Developer: Startup Performance** command enabled.
 `--disable-gpu` | Disable GPU hardware acceleration.
@@ -112,6 +113,7 @@ Argument|Description
 `--upload-logs` | Uploads logs from current session to a secure endpoint.
 **Multi-root**|
 `--add <dir>` | Add folder(s) to the last active window for a multi-root workspace.
+`--remove <dir>` | Remove folder(s) from the last active window for a multi-root workspace.
 
 ### Create remote tunnel
 
@@ -163,6 +165,14 @@ vscode://file/{full path to file}:line:column
 vscode://file/c:/myProject/package.json:5:10
 ```
 
+Open the Settings Editor
+
+```bash
+vscode://settings/setting.name
+
+vscode://settings/editor.wordWrap
+```
+
 You can use the URL in applications such as browsers or file explorers that can parse and redirect the URL. For example, on Windows, you could pass a `vscode://` URL directly to the Windows Explorer or to the command line as `start vscode://{full path to file}`.
 
 ![vscode url in Windows Explorer](images/command-line/vscode-url.png)
@@ -192,3 +202,9 @@ VS Code has an [Integrated Terminal](/docs/terminal/basics.md) where you can run
 ### Can I specify the settings location for VS Code in order to have a portable version?
 
 Not directly through the command line, but VS Code has a [Portable Mode](/docs/editor/portable.md), which lets you keep settings and data in the same location as your installation, for example, on a USB drive.
+
+### How do I detect when a shell was launched by VS Code?
+
+When VS Code starts up, it may launch a shell in order to source the "shell environment" to help set up tools. This will launch an **interactive login** shell and fetch its environment. Depending on your shell setup, this may cause problems. For example, it may be unexpected that the shell is launched as an interactive session, which VS Code needs in order to try to align `$PATH` with the exact value in a user created terminal.
+
+Whenever VS Code launches this initial shell, VS Code sets the variable `VSCODE_RESOLVING_ENVIRONMENT` to `1`. If your shell or user scripts need to know if they are being run in the context of this shell, you can check the `VSCODE_RESOLVING_ENVIRONMENT` value.

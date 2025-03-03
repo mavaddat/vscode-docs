@@ -4,7 +4,7 @@ Area: languages
 TOCTitle: Java
 ContentId: 080fd21f-92b7-4491-9ab2-6eb9a3bb0793
 PageTitle: Java in Visual Studio Code
-DateApproved: 1/4/2022
+DateApproved: 02/06/2025
 MetaDescription: Learn about Visual Studio Code editor features (code completion, debugging, snippets, linting) for Java.
 ---
 # Java in Visual Studio Code
@@ -76,7 +76,7 @@ This document describes some of the key features included in those Java extensio
 
 ### Install a Java Development Kit (JDK)
 
-A Java Development Kit (JDK) is a software development environment used for developing Java applications. In order to run Java within Visual Studio Code, you need to install a JDK. The [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) supports Java version 1.5 or above.
+A Java Development Kit (JDK) is a software development environment used for developing Java applications. In order to run Java within Visual Studio Code, you need to install a JDK. The [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) supports Java version 1.8 or above.
 
 We recommend you to consider installing the JDK from one of these sources:
 
@@ -115,7 +115,7 @@ In Visual Studio Code, a "Workspace" means a collection of one or more filesyste
 
 A "folder workspace" is presented by VS Code when you open a filesystem folder (directory) in VS Code.
 
-A "multi-root workspace" can refer to multiple folders (directories) from disparate parts of the file system and VS Code displays the contents of the folder(s) of the workspace together in the [File Explorer](/docs/getstarted/userinterface.md#basic-layout). To learn more, see [Multi-root Workspaces](/docs/editor/multi-root-workspaces.md).
+A "multi-root workspace" can refer to multiple folders (directories) from disparate parts of the file system and VS Code displays the contents of the folder(s) of the workspace together in the [File Explorer](/docs/getstarted/userinterface.md#basic-layout). To learn more, see [Multi-root Workspaces](/docs/editor/workspaces/multi-root-workspaces.md).
 
 ### Java projects in VS Code
 
@@ -157,11 +157,11 @@ One of the key advantages of VS Code is speed. When you open your Java source fi
 
 [GitHub Copilot](https://copilot.github.com/) is an AI-powered code completion tool that helps you write code faster and smarter. You can use the [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) in VS Code to generate code, or to learn from the code it generates.
 
-![Copilot extension in the VS Code Marketplace](images/java/copilot-extension.png)
+[![GitHub Copilot extension in the VS Code Marketplace](images/java/copilot-extension.png)](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
 GitHub Copilot provides suggestions for numerous languages and a wide variety of frameworks, and it works especially well for Python, JavaScript, TypeScript, Ruby, Go, C# and C++.
 
-You can learn more about how to get started with Copilot in the [Copilot documentation](/docs/editor/artificial-intelligence.md).
+You can learn more about how to get started with Copilot in the [Copilot documentation](/docs/editor/github-copilot.md).
 
 ## Code snippets
 

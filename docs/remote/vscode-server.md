@@ -5,7 +5,7 @@ TOCTitle: VS Code Server
 PageTitle: Visual Studio Code Server
 ContentId: d750ab6d-82c2-4e64-8fbb-7888e1374381
 MetaDescription: Using Visual Studio Code Server
-DateApproved: 7/6/2023
+DateApproved: 03/05/2025
 ---
 # Visual Studio Code Server
 
@@ -89,14 +89,10 @@ No, hosting it as a service is not allowed, as specified in the [VS Code Server 
 
 ### Is there a list of endpoints the VS Code Server uses?
 
-If you're working in a restricted environment, you may need to ensure the VS Code Server has access to the following endpoints:
+If you're working in a restricted environment, you may need to ensure the VS Code Server has access to the endpoints listed in the following articles:
 
-* https://code.visualstudio.com/docs/setup/network#_common-hostnames
-* https://code.visualstudio.com/docs/remote/ssh#_what-are-the-connectivity-requirements-for-the-vs-code-server-when-it-is-running-on-a-remote-machine-vm
-
-### Can I use the Remote Development Extensions or a dev container with the VS Code Server?
-
-Not at this time.
+* [https://code.visualstudio.com/docs/setup/network#_common-hostnames](https://code.visualstudio.com/docs/setup/network#_common-hostnames)
+* [https://code.visualstudio.com/docs/remote/ssh#_what-are-the-connectivity-requirements-for-the-vs-code-server-when-it-is-running-on-a-remote-machine-vm](https://code.visualstudio.com/docs/remote/ssh#_what-are-the-connectivity-requirements-for-the-vs-code-server-when-it-is-running-on-a-remote-machine-vm)
 
 ### Are there any other extension limitations?
 
@@ -113,6 +109,8 @@ You will get a notification in VS Code when you connect to your remote machine i
 ### I see an error about keyring storage. What should I do?
 
 Settings Sync requires authentication against a Settings Sync server. The corresponding secret is persisted on the server. This requires to set up a keyring on the server. When the keyring is not set up, the VS Code Server falls back to an in-memory secret stored on the server. In this case, secrets are only persisted during the lifetime of the server.
+
+[This issue](https://github.com/microsoft/vscode-remote-release/issues/8628) provides more context and may help you troubleshoot. If you're still experiencing issues, please feel free to file a new issue in the [VS Code Remote GitHub repo](https://github.com/microsoft/vscode-remote-release/issues).
 
 ### Where can I provide feedback or report an issue?
 

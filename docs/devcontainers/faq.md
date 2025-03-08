@@ -5,7 +5,7 @@ TOCTitle: FAQ
 PageTitle: Visual Studio Code Dev Containers Frequently Asked Questions
 ContentId: c4784db6-ab00-4ac7-bca8-88edb638c593
 MetaDescription: Visual Studio Code troubleshooting tips and tricks for Dev Containers
-DateApproved: 7/6/2023
+DateApproved: 03/05/2025
 ---
 # Dev Containers FAQ
 
@@ -37,11 +37,11 @@ A VS Code window can only connect to one window currently, but you can open a ne
 
 ## Can I work with containers on a remote host?
 
-Yes, see the section on [opening a folder on a remote SSH host in a container](/docs/remote/ssh.md#open-a-folder-on-a-remote-ssh-host-in-a-container) for information.
+Yes, see the sections on [opening a folder on a remote SSH host](/docs/remote/ssh.md#open-a-folder-on-a-remote-ssh-host-in-a-container) or [Remote Tunnels host in a container](/docs/remote/tunnels.md#open-a-folder-on-a-remote-tunnels-host-in-a-container) for information.
 
 ## How can I build or deploy container images into my local Docker / Kubernetes install when working inside a container?
 
-You can build images and deploy containers by forwarding the Docker socket and installing the Docker CLI (and kubectl for Kubernetes) in the container. See the [Docker-from-Docker](https://aka.ms/vscode-remote/samples/docker-from-docker), [Docker-from-Docker Compose](https://aka.ms/vscode-remote/samples/docker-from-docker-compose), and [Kubernetes-Helm](https://aka.ms/vscode-remote/samples/kubernetes-helm) dev container definitions for details.
+You can build images and deploy containers by forwarding the Docker socket and installing the Docker CLI (and kubectl for Kubernetes) in the container. See the [Docker outside of Docker](https://github.com/devcontainers/templates/tree/main/src/docker-outside-of-docker), [Docker outside of Docker Compose](https://github.com/devcontainers/templates/tree/main/src/docker-outside-of-docker-compose), and [Kubernetes-Helm](https://github.com/devcontainers/templates/tree/main/src/kubernetes-helm) dev container definitions for details.
 
 ## What are the connectivity requirements for the VS Code Server when it is running in a container?
 

@@ -77,7 +77,7 @@ The following JSON snippet shows examples of the different `settings(extensions.
 }
 ```
 
-Specify publishers by their publisher ID. If a key does not have a period (`.`), it is considered a publisher ID. If a key has a period, it is considered an extension ID. The use of wildcards is currently not supported.
+Specify publishers by their publisher ID. If a key does not have a period (`.`), it is considered a publisher ID. If a key has a period, it is considered an extension ID.
 
 > [!TIP]
 > You can use `microsoft` as the publisher ID to refer to all extensions published by Microsoft, even though they might have different publisher IDs.
@@ -87,6 +87,8 @@ Version ranges are not supported. If you want to allow multiple versions of an e
 The more specific the selector, the higher the precedence. For example, `"microsoft": true` and `"microsoft.cplusplus": false` allows all Microsoft extensions, except for the C++ extension.
 
 Duplicate key values are not supported. For example, including both `"microsoft": true` and `"microsoft": false` results in an invalid policy.
+
+The use of wildcards in extension or publisher IDs is not supported, except for the special case of `"*"` to allow or block all extensions. For example, `"*": false` blocks all extensions.
 
 ## Preinstall extensions
 

@@ -13,7 +13,7 @@ Visual Studio Code extensions enhance productivity but require careful managemen
 > [!NOTE]
 > Support for allowed extensions is available starting from VS Code version 1.96.
 
-VS Code supports controlling which extension can be installed on users' machines through the `setting(extensions.allowed)` application-wide setting. You can selectively allow extensions by publisher, specific extension, version, and platform.
+VS Code supports controlling which extensions can be installed on users' machines through the `setting(extensions.allowed)` application-wide setting. You can selectively allow extensions by publisher, specific extension, version, and platform.
 
 If the setting is not configured, all extensions are allowed. If the setting is configured, all extensions that are not listed are blocked from installing. If you block an extension or version that is already installed, the extension is disabled.
 
@@ -46,7 +46,7 @@ The `extensions.allowed` setting contains a list of extension selectors that det
 
 The following JSON snippet shows examples of the different `settings(extensions.allowed)` setting values:
 
-```json
+```jsonc
 "extensions.allowed": {
     // Allow all extensions from the 'microsoft' publisher. If the key does not have a '.', it means it is a publisher ID.
     "microsoft": true,
@@ -73,7 +73,7 @@ The following JSON snippet shows examples of the different `settings(extensions.
     "github.vscode-pull-request-github": "stable",
 
     // Allow only stable versions from redhat publisher
-    "redhat": "stable",
+    "redhat": "stable"
 }
 ```
 
@@ -109,41 +109,25 @@ Users can still uninstall extensions that were preinstalled. Restarting VS Code 
 
 ## Host a private extension marketplace
 
-The private marketplace enables enterprises to self-host and distribute extensions within their organization to meet organizational security and compliance requirements. The private marketplace integrates with the VS Code extensions experience, giving users easy discovery and automatic updates of private extensions.
+The private marketplace enables enterprises to self-host and distribute extensions within their organization to meet security and compliance requirements. The private marketplace integrates with the VS Code extensions experience, giving users discovery and automatic updates of private extensions.
+
+Key features of the private marketplace:
+
+* **Self-hosting**: Host internal extensions on your own infrastructure, such as Azure or Kubernetes, to protect intellectual property.
+* **Upstreaming**: Automatically include public extensions from the [Visual Studio Marketplace](https://marketplace.visualstudio.com), even in environments with restricted internet connectivity. Allow or deny select extensions by setting up an [allow list](#configure-allowed-extensions).
+* **Rehosting**: Download and host public extensions to apply enterprise-specific verification and security standards, with support for air-gapped environments. See how [Microsoft protects your software supply chain](https://aka.ms/vsmsecurityblog).
+* **Simple deployment**: Deploy as a stateless Docker container, no external database required.
+* **Flexible storage**: Publish and manage extensions using any file system or Azure Artifacts.
+* **Centralized rollout**: Deploy the private marketplace to your team using group policy on Windows and macOS.
+* **Integrated installation and updates**: Search for and install extensions directly from VS Code, with automatic updates for new versions.
+* **Cross-platform support**: Compatible with VS Code desktop on Windows, macOS, and Linux.
 
 > [!NOTE]
 > Connecting from VS Code Server or VS Code for the Web is not supported.
 
-<details>
-<summary>Use cases</summary>
-
-* Hosting internal extensions privately to protect intellectual property.
-* Providing developers with access to selected or all extensions from the [Visual Studio Marketplace](https://marketplace.visualstudio.com), even in environments with restricted internet connectivity.
-* Downloading and rehosting extensions from external sources to apply enterprise-specific verification and security standards. See how [Microsoft protects your software supply chain](https://aka.ms/vsmsecurityblog).
-
-</details>
-
-<details>
-<summary>Key features</summary>
-
-* **Self-hosting**: Host internal and downloaded extensions on your own infrastructure, such as Azure or Kubernetes.
-* **Simple deployment**: Deploy the private marketplace as a stateless Docker container, no external database required.
-* **Flexible storage**: Publish and manage extensions using any file system or Azure Artifacts.
-* **Upstreaming**: Choose to automatically include public extensions from the Visual Studio Marketplace. Allow or deny select extensions by setting up an [allow list](#configure-allowed-extensions).
-* **Rehosting**: Choose to download and host public extensions for enhanced security and support for environments without public internet connectivity (air-gapped).
-* **Centralized rollout**: Deploy the private marketplace to your team using group policy on Windows and macOS.
-* **Integrated installation and updates**: Search for and install extensions directly from VS Code, with automatic updates for new versions in the private marketplace.
-* **Cross-platform support**: Compatible with VS Code desktop on Windows, macOS, and Linux.
-
-</details>
-
-### Availability
-
 Private marketplace is currently available to GitHub Enterprise customers. VS Code users must sign in with a GitHub Enterprise or Copilot Enterprise/Business account to access the private marketplace.
 
-### Getting started
-
-Refer to the **[deployment and feature guide](https://aka.ms/private-marketplace/readme)** for deployment instructions, scripts, and development environment configuration. If you have questions or need assistance, contact [private marketplace support](https://aka.ms/vspm/support).
+Get started with the **[deployment and feature guide](https://aka.ms/private-marketplace/readme)**, which includes deployment instructions, scripts, and development environment configuration. For questions or assistance, contact [private marketplace support](https://aka.ms/vspm/support).
 
 ## Related resources
 
